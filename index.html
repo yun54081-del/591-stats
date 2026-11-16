@@ -1,0 +1,228 @@
+<!doctype html><html lang="zh-Hant"><head><meta name="robots" content="noindex,nofollow"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>興城團隊 591 件數統計</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: single phone-first column — header, hero total, sort switch, agent list, history chart. One committed warm look from the team's Claude Design file. */
+:root{--bg:#f5ead8;--surface:#eddcc0;--text:#201e1d;--muted:#6b6259;--acc:#c67139;--acc100:#f7e3d4;--acc300:#e8b48f;--acc700:#8c491a;--acc800:#6e3713;--sage:#7a8a5e;--sage100:#e6ecdc;--sage300:#b8c69e;--sage700:#4e5c37;--sage800:#3c4729;--divider:#d9c6a6;--axis:#b9a687;
+ --f-display:Caprasimo,"Noto Sans TC",serif;--f-body:Figtree,"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color-scheme:light}
+body{background:var(--bg);color:var(--text);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+.page{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:560px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+.h{font-family:var(--f-display);font-weight:400}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--acc700)}
+.title{font-size:32px;line-height:1.1;margin:0;text-wrap:balance}
+.pill{display:flex;align-items:center;gap:12px;background:var(--sage100);border-radius:999px;padding:8px 16px 8px 8px;color:var(--sage800)}
+.pill .ic{width:36px;height:36px;flex:none;border-radius:999px;background:var(--sage);color:var(--bg);display:grid;place-items:center}
+.pill b{font-size:13px;display:block}.pill .s{font-size:12px}
+.hero{background:var(--acc700);color:var(--bg);border-radius:32px;padding:22px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.hero .blob{position:absolute;right:-40px;top:-50px;width:170px;height:170px;border-radius:999px;background:var(--acc)}
+.hero>*{position:relative}
+.hero .num{font-size:68px;line-height:.95;font-variant-numeric:tabular-nums}
+.split{display:flex;height:12px;gap:3px}.split i{border-radius:999px;display:block}
+.legend{display:flex;gap:18px;font-size:13px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}.legend i{width:9px;height:9px;border-radius:999px;display:inline-block}
+.chip{align-self:flex-start;font-size:12px;font-weight:600;background:var(--acc800);border-radius:999px;padding:6px 12px}
+.seg{display:flex;background:var(--surface);border-radius:999px;padding:4px;gap:4px}
+.seg button{flex:1;border:0;border-radius:999px;padding:9px 0;font:inherit;font-size:14px;font-weight:600;cursor:pointer;background:transparent;color:var(--text)}
+.seg button.on{background:var(--acc);color:var(--bg)}
+.card{background:var(--surface);border-radius:28px;padding:6px 6px 8px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 62px 40px 42px 50px;gap:6px;align-items:center}
+.head{padding:10px 14px 8px 12px;font-size:11px;font-weight:700;color:var(--muted)}
+.head span:not(:first-child){text-align:right}
+.r{width:100%;border:0;background:transparent;border-radius:22px;padding:9px 14px 9px 8px;cursor:pointer;text-align:left;font:inherit;color:inherit;display:block}
+.r:hover,.r.low{background:var(--acc100)}
+.who{display:flex;align-items:center;gap:10px;min-width:0}
+.av{width:32px;height:32px;flex:none;border-radius:999px;display:grid;place-items:center;font-size:13px;font-weight:700}
+.nm{font-size:14px;font-weight:600;white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis}
+.tag{font-size:10px;font-weight:700;color:var(--acc800);display:block}
+.n{text-align:right;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.tot{text-align:right;font-family:var(--f-display);font-size:17px}
+.d{display:flex;flex-direction:column;align-items:flex-end;font-size:11px;font-weight:700;line-height:1.35;white-space:nowrap}
+.up{color:var(--sage800)}.down{color:var(--acc800)}.zero{color:var(--muted)}
+.bars{display:flex;height:6px;gap:2px;margin:6px 0 0 42px}.bars i{border-radius:999px;display:block}
+.foot{margin:6px 2px 0;background:var(--bg);border-radius:22px;padding:11px 14px}
+.note{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px;margin:0}
+.back{align-self:flex-start;display:flex;align-items:center;gap:4px;border:0;background:var(--surface);border-radius:999px;padding:8px 14px 8px 8px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--acc700)}
+.big{border-radius:26px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.link{display:flex;align-items:center;justify-content:space-between;text-decoration:none;border-radius:999px;padding:13px 20px;font-family:var(--f-display);font-size:15px}
+.tcard{background:var(--surface);border-radius:28px;padding:18px}
+.tcard h2{font-size:20px;margin:0 0 4px}
+.chart{min-height:200px;position:relative}
+.chart svg{display:block}
+.tip{position:absolute;background:var(--bg);border:1px solid var(--divider);border-radius:12px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 12px rgba(32,30,29,.12);white-space:nowrap}
+.tip i{display:inline-block;width:8px;height:8px;border-radius:999px;margin-right:5px}
+.msg{background:var(--acc100);color:var(--acc800);border-radius:20px;padding:14px 16px;font-size:13px}
+.empty{padding:28px 16px;text-align:center;color:var(--muted);font-size:13px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+@media (max-width:400px){.row{grid-template-columns:minmax(0,1fr) 34px 30px 36px 46px}.hero .num{font-size:56px}}
+</style>
+<div class="page"><div class="wrap">
+ <section id="list-view" class="wrap" style="max-width:none">
+  <div style="display:flex;flex-direction:column;gap:4px">
+   <div class="kicker">興城團隊 · 591</div>
+   <h1 class="h title">業務件數統計</h1>
+  </div>
+  <div class="pill">
+   <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+   <span><b>每天 12:00 自動更新</b><span class="s">上次 <span id="last">—</span> · 下次 <span id="next">—</span></span></span>
+  </div>
+  <div id="status" class="msg" hidden></div>
+  <div class="hero">
+   <div class="blob"></div>
+   <div style="font-size:14px;font-weight:500">已上架總件數</div>
+   <div style="display:flex;align-items:baseline;gap:8px"><span class="h num" id="t-total">—</span><span style="font-size:16px">件</span></div>
+   <div class="split"><i id="split-sale" style="background:var(--acc300);width:50%"></i><i style="background:var(--sage300);flex:1"></i></div>
+   <div class="legend">
+    <span><i style="background:var(--acc300)"></i>中古屋買賣 <b id="t-sale">—</b></span>
+    <span><i style="background:var(--sage300)"></i>租賃 <b id="t-rent">—</b></span>
+   </div>
+   <div class="chip">較前期 · 買賣 <span id="t-ds">—</span> · 租賃 <span id="t-dr">—</span></div>
+  </div>
+  <div class="seg" role="group" aria-label="排序">
+   <button type="button" id="sort-total" data-k="total" class="on">合計</button><button type="button" id="sort-sale" data-k="sale">買賣</button><button type="button" id="sort-rent" data-k="rent">租賃</button><button type="button" id="sort-diff" data-k="dAbs">變動</button>
+  </div>
+  <div class="card">
+   <div class="row head"><span>業務</span><span>中古屋買賣</span><span>租賃</span><span>合計</span><span>較前期</span></div>
+   <div id="rows"><div class="empty">資料載入中…每天中午統計後，這裡會列出每位業務的件數。</div></div>
+   <div class="row foot"><b style="font-size:14px">團隊合計</b><span class="n" style="color:var(--acc700)" id="f-sale">—</span><span class="n" style="color:var(--sage700)" id="f-rent">—</span><span class="tot" id="f-total">—</span><span class="d"><span id="f-ds">—</span><span id="f-dr">—</span></span></div>
+  </div>
+  <p class="note"><span id="cmp-note">較前期：與上一次記錄比較，▲ 增加 ▼ 減少。</span><span>合計低於 5 件的業務以淺色底標示；點業務可看明細。</span></p>
+  <div class="tcard">
+   <h2 class="h">歷期上架件數</h2>
+   <p class="note" style="margin-bottom:10px">每天中午 12:00 自動記錄一次，全體業務加總</p>
+   <div class="legend" style="color:var(--muted);margin-bottom:6px"><span><i style="background:var(--acc)"></i>中古屋買賣</span><span><i style="background:var(--sage)"></i>租賃</span></div>
+   <div class="chart" id="chart"></div>
+  </div>
+ </section>
+ <section id="detail-view" class="wrap" style="max-width:none" hidden></section>
+</div></div>
+<script id="snap" type="application/json">{"agents":[{"id":"31188","name":"郭彥坤"},{"id":"49394","name":"黃唯哲"},{"id":"31181","name":"周亮宏"},{"id":"40605","name":"沈秋瑛"},{"id":"27979","name":"邵軾哲"},{"id":"33063","name":"高珮玲"},{"id":"41167","name":"吳逸信"},{"id":"8220","name":"林秉均"},{"id":"31219","name":"陳沐溱"},{"id":"34527","name":"李濰樂"},{"id":"47764","name":"郭偉鈞"}],"days":[{"counts":{"8220":[22,4],"27979":[6,3],"31181":[6,3],"31188":[2,4],"31219":[10,3],"33063":[11,10],"34527":[13,6],"40605":[3,2],"41167":[6,4],"47764":[12,9],"49394":[26,14]},"date":"2026-10-27","time":"16:17"},{"counts":{"8220":[22,3],"27979":[8,3],"31181":[6,3],"31188":[2,1],"31219":[10,3],"33063":[10,7],"34527":[15,6],"40605":[5,2],"41167":[5,3],"47764":[12,9],"49394":[26,15]},"date":"2026-10-31","time":"16:17"},{"counts":{"8220":[22,3],"27979":[8,3],"31181":[6,3],"31188":[2,1],"31219":[10,3],"33063":[10,7],"34527":[15,6],"40605":[5,2],"41167":[5,3],"47764":[12,9],"49394":[26,15]},"date":"2026-11-01","time":"11:51"},{"counts":{"8220":[22,3],"27979":[8,3],"31181":[6,4],"31188":[2,1],"31219":[8,3],"33063":[10,8],"34527":[17,6],"40605":[5,1],"41167":[5,3],"47764":[12,9],"49394":[26,15]},"date":"2026-11-03","time":"11:50"},{"counts":{"8220":[23,6],"27979":[8,2],"31181":[6,3],"31188":[2,1],"31219":[8,3],"33063":[10,9],"34527":[15,6],"40605":[5,3],"41167":[6,3],"47764":[12,9],"49394":[26,14]},"date":"2026-11-07","time":"14:51"},{"counts":{"8220":[23,6],"27979":[8,2],"31181":[6,3],"31188":[2,1],"31219":[8,3],"33063":[10,9],"34527":[15,6],"40605":[5,4],"41167":[6,3],"47764":[12,9],"49394":[26,14]},"date":"2026-11-08","time":"11:51"},{"counts":{"8220":[23,5],"27979":[6,2],"31181":[6,3],"31188":[2,1],"31219":[8,3],"33063":[10,9],"34527":[15,6],"40605":[5,4],"41167":[6,3],"47764":[12,9],"49394":[26,17]},"date":"2026-11-09","time":"11:51"},{"counts":{"8220":[25,6],"27979":[5,1],"31181":[6,4],"31188":[2,1],"31219":[8,3],"33063":[9,8],"34527":[15,6],"40605":[5,4],"41167":[7,4],"47764":[12,9],"49394":[27,17]},"date":"2026-11-11","time":"12:19"},{"counts":{"8220":[16,4],"27979":[5,4],"31181":[6,5],"31188":[5,4],"31219":[6,3],"33063":[9,8],"34527":[11,6],"40605":[5,6],"41167":[6,1],"47764":[12,9],"49394":[25,13]},"date":"2026-11-15","time":"14:53"},{"counts":{"8220":[18,7],"27979":[5,4],"31181":[6,5],"31188":[5,4],"31219":[6,3],"33063":[9,8],"34527":[10,6],"40605":[5,6],"41167":[5,1],"47764":[2,9],"49394":[25,9]},"date":"2026-11-16","time":"17:41"}]}</script>
+<script>
+const LOW=5;
+const PAL=[['var(--acc300)','var(--acc800)'],['var(--sage300)','var(--sage800)'],['#d6c7b3','#4a423a']];
+const $=id=>document.getElementById(id);
+const fmtD=d=>String(d||'').replace(/-/g,'/');
+const dl=n=>n==null?{t:'—',c:'zero'}:n>0?{t:'▲'+n,c:'up'}:n<0?{t:'▼'+(-n),c:'down'}:{t:'0',c:'zero'};
+const SVGNS='http://www.w3.org/2000/svg';
+function el(tag,attrs,kids){const e=document.createElement(tag);for(const k in (attrs||{})){const v=attrs[k];if(v==null)continue;if(k==='text')e.textContent=v;else if(k==='style')e.style.cssText=v;else e.setAttribute(k,v);}(kids||[]).forEach(c=>c&&e.appendChild(c));return e;}
+function sv(tag,attrs){const e=document.createElementNS(SVGNS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+let agents=[],days=[],sortK='total',selected=null;
+
+(function(){const n=new Date(),t=new Date(n.getTime()+8*36e5);let x=new Date(Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate(),4));if(x<=n)x=new Date(x.getTime()+864e5);const y=new Date(x.getTime()+8*36e5);
+ $('next').textContent=`${y.getUTCFullYear()}/${String(y.getUTCMonth()+1).padStart(2,'0')}/${String(y.getUTCDate()).padStart(2,'0')} 12:00`;})();
+
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{sortK=b.dataset.k;document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x===b));render();}));
+
+function model(){
+ const cur=days[days.length-1],prev=days.length>1?days[days.length-2]:null;
+ if(!cur)return null;
+ const list=agents.length?agents:Object.keys(cur.counts||{}).map(id=>({id,name:id}));
+ const A=list.map((a,i)=>{const c=(cur.counts||{})[a.id]||[0,0],p=prev&&(prev.counts||{})[a.id];
+  const sale=+c[0]||0,rent=+c[1]||0;const dS=p?sale-(+p[0]||0):null,dR=p?rent-(+p[1]||0):null;
+  return{...a,sale,rent,total:sale+rent,dS,dR,dAbs:Math.abs(dS||0)+Math.abs(dR||0),pal:PAL[i%3],failed:(cur.errors||[]).includes(a.name)};});
+ const sum=(arr,k)=>arr.reduce((n,a)=>n+a[k],0);
+ const sale=sum(A,'sale'),rent=sum(A,'rent');
+ let ps=null,pr=null;if(prev){ps=0;pr=0;list.forEach(a=>{const p=(prev.counts||{})[a.id];if(p){ps+=+p[0]||0;pr+=+p[1]||0;}});}
+ return{A,cur,prev,sale,rent,total:sale+rent,dS:prev?sale-ps:null,dR:prev?rent-pr:null};
+}
+
+function setD(id,n,prefix){const d=dl(n);const e=$(id);e.textContent=(prefix||'')+d.t;e.className=prefix?d.c:'';}
+
+function render(){
+ const M=model();
+ const lv=$('list-view'),dv=$('detail-view');
+ if(!M){lv.hidden=false;dv.hidden=true;return;}
+ $('last').textContent=fmtD(M.cur.date)+(M.cur.time?' '+M.cur.time:'');
+ const st=$('status');if(M.cur.errors&&M.cur.errors.length){st.hidden=false;st.textContent=`本次有 ${M.cur.errors.length} 位抓取失敗，沿用前一次數字：${M.cur.errors.join('、')}`;}else st.hidden=true;
+ $('t-total').textContent=M.total;$('t-sale').textContent=M.sale;$('t-rent').textContent=M.rent;
+ $('split-sale').style.width=(M.total?M.sale/M.total*100:50)+'%';
+ setD('t-ds',M.dS);setD('t-dr',M.dR);
+ $('f-sale').textContent=M.sale;$('f-rent').textContent=M.rent;$('f-total').textContent=M.total;setD('f-ds',M.dS,'買 ');setD('f-dr',M.dR,'租 ');
+ $('cmp-note').textContent=M.prev?`較前期：與 ${fmtD(M.prev.date)} 比較，▲ 增加 ▼ 減少。`:'較前期：第二次記錄後開始顯示增減。';
+ if(selected!=null){const a=M.A.find(x=>String(x.id)===String(selected));if(a){lv.hidden=true;dv.hidden=false;detail(a,M.total);return;}selected=null;}
+ lv.hidden=false;dv.hidden=true;
+ const box=$('rows');box.textContent='';
+ const rows=M.A.slice().sort((a,b)=>b[sortK]-a[sortK]);const max=Math.max(1,...M.A.map(a=>a.total));
+ rows.forEach(a=>{const ds=dl(a.dS),dr=dl(a.dR);
+  const btn=el('button',{type:'button',class:'r'+(a.total<LOW?' low':'')},[
+   el('span',{class:'row'},[
+    el('span',{class:'who'},[el('span',{class:'av',style:`background:${a.pal[0]};color:${a.pal[1]}`,text:String(a.name).slice(-1)}),el('span',{style:'min-width:0'},[el('span',{class:'nm',text:a.name}),a.failed?el('span',{class:'tag',text:'抓取失敗'}):a.total<LOW?el('span',{class:'tag',text:'低於 5 件'}):null])]),
+    el('span',{class:'n',style:'color:var(--acc700)',text:String(a.sale)}),
+    el('span',{class:'n',style:'color:var(--sage700)',text:String(a.rent)}),
+    el('span',{class:'tot',text:String(a.total)}),
+    el('span',{class:'d'},[el('span',{class:ds.c,text:'買 '+ds.t}),el('span',{class:dr.c,text:'租 '+dr.t})])]),
+   el('span',{class:'bars'},[el('i',{style:`background:var(--acc);width:${a.sale/max*100}%`}),el('i',{style:`background:var(--sage);width:${a.rent/max*100}%`})])]);
+  btn.addEventListener('click',()=>{selected=a.id;render();window.scrollTo(0,0);});
+  box.appendChild(btn);});
+ chart();
+}
+
+function detail(a,total){
+ const v=$('detail-view');v.textContent='';
+ const back=el('button',{type:'button',class:'back'});
+ back.appendChild(document.createRange().createContextualFragment('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>'));
+ back.appendChild(document.createTextNode('全部業務'));back.addEventListener('click',()=>{selected=null;render();});
+ const id=String(a.id).replace(/\D/g,'');const url='https://www.591.com.tw/broker'+id;
+ const ds=dl(a.dS),dr=dl(a.dR);
+ v.append(back,
+  el('div',{style:'display:flex;align-items:center;gap:16px'},[el('span',{class:'av',style:`width:76px;height:76px;font-size:28px;background:${a.pal[0]};color:${a.pal[1]}`,text:String(a.name).slice(-1)}),
+   el('div',{style:'min-width:0'},[el('div',{class:'h',style:'font-size:28px',text:a.name}),el('div',{style:'font-size:13px;color:var(--muted)',text:`佔團隊 ${Math.round(a.total/(total||1)*100)}% · 合計 ${a.total} 件`})])]),
+  el('div',{class:'two'},[
+   el('div',{class:'big',style:'background:var(--acc100);color:var(--acc800)'},[el('span',{style:'font-size:13px',text:'中古屋買賣'}),el('span',{class:'h',style:'font-size:44px;line-height:1',text:String(a.sale)}),el('b',{style:'font-size:12px',class:ds.c,text:'較前期 '+ds.t})]),
+   el('div',{class:'big',style:'background:var(--sage100);color:var(--sage800)'},[el('span',{style:'font-size:13px',text:'租賃'}),el('span',{class:'h',style:'font-size:44px;line-height:1',text:String(a.rent)}),el('b',{style:'font-size:12px',class:dr.c,text:'較前期 '+dr.t})])]),
+  id?el('a',{class:'link',style:'background:var(--acc);color:var(--bg)',href:url+'-sale',target:'_blank',rel:'noopener',text:'在 591 查看中古屋 ↗'}):null,
+  id?el('a',{class:'link',style:'border:1px solid var(--divider);color:var(--text)',href:url+'-rent',target:'_blank',rel:'noopener',text:'在 591 查看租屋 ↗'}):null);
+}
+
+function chart(){
+ const cb=$('chart');cb.textContent='';
+ const ids=agents.map(a=>String(a.id));
+ const data=days.map(d=>{let s=0,r=0;Object.entries(d.counts||{}).forEach(([k,c])=>{if(ids.length&&!ids.includes(k))return;s+=+c[0]||0;r+=+c[1]||0;});return{date:d.date,sale:s,rent:r,total:s+r};});
+ if(!data.length)return;
+ const W=Math.max(260,cb.clientWidth||320),H=200,m={t:12,r:6,b:26,l:34};
+ const maxV=Math.max(1,...data.map(d=>d.total))*1.1;
+ const step0=[1,2,5,10,20,25,50,100,200,500].find(s=>maxV/s<=5)||1000;const top=Math.ceil(maxV/step0)*step0;
+ const y=v=>H-m.b-(v/top)*(H-m.t-m.b);
+ const band=(W-m.l-m.r)/data.length,bw=Math.min(32,band*0.65);
+ const svg=sv('svg',{width:'100%',viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'歷期上架件數長條圖'});
+ for(let v=0;v<=top;v+=step0){svg.appendChild(sv('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:'var(--divider)','stroke-width':1}));const t=sv('text',{x:m.l-6,y:y(v)+4,'text-anchor':'end','font-size':11,fill:'var(--muted)'});t.textContent=v;svg.appendChild(t);}
+ svg.appendChild(sv('line',{x1:m.l,x2:W-m.r,y1:H-m.b,y2:H-m.b,stroke:'var(--axis)','stroke-width':1}));
+ const every=Math.ceil(data.length/Math.max(1,Math.floor((W-m.l)/56)));
+ const tip=el('div',{class:'tip',hidden:''});
+ data.forEach((d,i)=>{const x=m.l+band*i+(band-bw)/2;
+  svg.appendChild(sv('rect',{x,width:bw,y:y(d.sale),height:Math.max(0,y(0)-y(d.sale)),fill:'var(--acc)'}));
+  svg.appendChild(sv('rect',{x,width:bw,y:y(d.total),height:Math.max(0,y(d.sale)-y(d.total)),fill:'var(--sage)',rx:4}));
+  if(i%every===0){const t=sv('text',{x:x+bw/2,y:H-8,'text-anchor':'middle','font-size':11,fill:'var(--muted)'});t.textContent=String(d.date).slice(5).replace('-','/');svg.appendChild(t);}
+  const hit=sv('rect',{x:m.l+band*i,width:band,y:m.t,height:H-m.t-m.b,fill:'transparent'});
+  hit.addEventListener('mousemove',e=>{tip.hidden=false;tip.textContent='';tip.appendChild(el('div',{style:'color:var(--muted)',text:fmtD(d.date)}));
+   [['中古屋買賣',d.sale,'var(--acc)'],['租賃',d.rent,'var(--sage)'],['合計',d.total,null]].forEach(([n,v,c])=>{const l=el('div');if(c)l.appendChild(el('i',{style:'background:'+c}));l.appendChild(document.createTextNode(n+' '+v));tip.appendChild(l);});
+   const r=cb.getBoundingClientRect();let lx=e.clientX-r.left+10;if(lx+130>r.width)lx=e.clientX-r.left-140;tip.style.left=Math.max(0,lx)+'px';tip.style.top=(e.clientY-r.top-10)+'px';});
+  hit.addEventListener('mouseleave',()=>{tip.hidden=true;});
+  svg.appendChild(hit);});
+ cb.appendChild(svg);cb.appendChild(tip);
+}
+
+let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(days.length)chart();},150);});
+
+/* 內嵌快照：不必登入也看得到（排程每天更新）；已登入的人另外會即時讀資料庫 */
+let SNAP=null;try{SNAP=JSON.parse($('snap').textContent);}catch(e){}
+if(SNAP&&Array.isArray(SNAP.days)&&SNAP.days.length){agents=Array.isArray(SNAP.agents)?SNAP.agents:[];days=SNAP.days.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date)));render();}
+
+(async()=>{
+ let db=null;try{db=await (window.claude&&window.claude.use?window.claude.use('db'):Promise.resolve(null));}catch(e){db=null;}
+ const box=$('rows');
+ if(!db){if(!days.length){box.textContent='';box.appendChild(el('div',{class:'empty',text:'目前還沒有統計資料，請稍後再看。'}));}return;}
+ db.doc('config/agents').onSnapshot(s=>{const d=s.data();if(d&&Array.isArray(d.list)&&d.list.length){agents=d.list;render();}},()=>{});
+ db.collection('days').orderBy('date','asc').limit(1000).onSnapshot(s=>{const live=s.docs.map(x=>x.data()).filter(Boolean);
+   if(live.length&&(!days.length||String(live[live.length-1].date)>=String(days[days.length-1].date))){days=live;render();}
+   else if(!days.length){box.textContent='';box.appendChild(el('div',{class:'empty',text:'還沒有統計資料。每天中午 12:00 統計後會自動出現在這裡。'}));}},
+  ()=>{});
+})();
+</script>
+
+</body></html>
